@@ -1,0 +1,14 @@
+name: step-face-coloring
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - occt
+  - pyqt
+  - numpy
+  - freecad
+  - pip
+  - pip:
+      - cadquery
+      - cadquery-ocp
