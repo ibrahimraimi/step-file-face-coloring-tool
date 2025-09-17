@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Byte-compiled / optimized / DLL files
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.env
+.venv
+venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Git
+.git
+.gitignore
+
+# Builds / caches
+build/
+dist/
+*.log
+.cache/
+pytest_cache/
+
+# Data / large files (tune as needed)
+*.zip
+*.tar
+*.tar.gz
+
+# Local scripts not needed in container runtime
+run_conda.sh
+setup.sh
+setup_conda.sh
+run.sh
+setup.bat

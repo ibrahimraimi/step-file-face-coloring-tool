@@ -209,6 +209,66 @@ python main.py
 
 ---
 
+## 🐳 Docker
+
+The project includes a production-ready `Dockerfile` that builds a single conda environment (`step-env`) and installs extra pip packages. This makes local development and deployments reproducible.
+
+### Build
+
+```bash
+docker build -t step-file-face-coloring:latest .
+```
+
+### Run (default command runs `python main.py` inside `step-env`)
+
+```bash
+docker run --rm -it step-file-face-coloring:latest
+```
+
+### Override command at runtime
+
+```bash
+docker run --rm -it step-file-face-coloring:latest python -m pip list
+docker run --rm -it step-file-face-coloring:latest python core/step_processor.py --help
+```
+
+### Mount local STEP files into the container
+
+- Linux/macOS:
+
+  ```bash
+  docker run --rm -it \
+    -v "$(pwd)/stp_files:/app/stp_files" \
+    step-file-face-coloring:latest
+  ```
+
+- Windows PowerShell:
+
+  ```powershell
+  docker run --rm -it `
+    -v ${PWD}/stp_files:/app/stp_files `
+    step-file-face-coloring:latest
+  ```
+
+### Notes for GUI (PyQt5/VTK) inside Docker
+
+Running GUI apps in containers needs display access:
+
+- Linux with X11:
+
+  ```bash
+  xhost +local:root
+  docker run --rm -it \
+    -e DISPLAY=$DISPLAY \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+    --device /dev/dri \
+    step-file-face-coloring:latest
+  ```
+
+- Windows/macOS (Docker Desktop): use an X server (e.g., VcXsrv on Windows, XQuartz on macOS) and set `DISPLAY` accordingly, or run the app in batch/headless modes if available.
+
+---
+
 ## 🔧 Development
 
 ### Testing Project Structure
