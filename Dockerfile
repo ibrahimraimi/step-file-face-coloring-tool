@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.7
+# syntax=docker/dockerfile:1.19
 # Lightweight base image with micromamba for fast conda env creation
 FROM mambaorg/micromamba:latest AS base
 
